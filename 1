@@ -1,0 +1,52 @@
+import 'dart:collection';
+
+class Task {
+  String tn;
+  String ts;
+  Task(this.tn, this.ts);
+}
+
+class TaskList {
+  final List<Task> _tasks = new List<Task>();
+
+  int get tottasks => _tasks.length;
+
+  UnmodifiableListView<Task> get tasks => UnmodifiableListView(_tasks);
+
+  void addtask(Task) {
+    print(Task);
+    _tasks.add(Task);
+  }
+
+  void removetask(int i) {
+    _tasks.removeAt(i);
+  }
+
+  void changetaskstatus(int i, String s) {
+    _tasks[i].ts = s;
+  }
+}
+
+void main() {
+  TaskList myList = new TaskList();
+
+  var a = myList.tasks;
+
+  myList.addtask(Task('aa', 'b'));
+  myList.addtask(Task('cc', 'd'));
+  myList.addtask(Task('ee', 'f'));
+  myList.addtask(Task('gg', 'h'));
+
+  //a.add(Task('l','m'));
+
+  //a.forEach((i)=>print(i.tn + ' ' + i.ts));
+  //print(a.length);
+
+  //myList.removetask(0);
+  //a.forEach((i)=>print(i.tn));
+
+  //myList.changetaskstatus(1,'z');
+  //a.forEach((i)=>print(i.tn + ' ' + i.ts));
+
+  //print(a.indexWhere((a)=>a.tn.startsWith('ee')));
+}
